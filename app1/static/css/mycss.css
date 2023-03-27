@@ -1,0 +1,131 @@
+
+table, th, td {
+    border: 3px solid black;
+    border: none;
+    margin: 1px;
+    text-align: justify;
+    padding-left: 2px;
+}
+
+input[type=email]{
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+    }
+
+    
+input[type=password]{
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+    }
+
+input[type=text]{
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;  
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+    }
+
+input[type=number]{
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;  
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+}
+
+#id_yop {
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;  
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+}
+ 
+textarea {
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+}
+
+input[type=url]{
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    text-align: justify;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid grey;
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+}
+
+
+input[type=date]{
+    padding: 12px 20px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+    border: 2px solid grey;
+}
+
+select{
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    margin: 0px 0px 8px;
+    font-family: Nunito, sans-serif;
+    border: 2px solid grey;
+    
+}

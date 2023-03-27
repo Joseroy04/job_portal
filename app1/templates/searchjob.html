@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block data %}
+
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
+  <!-- <div class="container"> -->
+    <!-- <div class="row">
+      <div class="col-md-7">
+        <h1 class="text-white font-weight-bold">Search Jobs</h1>
+        <div class="custom-breadcrumbs">
+          <a href="/">Home</a> <span class="mx-2 slash">/</span>
+          <a href="/search">Search Job</a> <span class="mx-2 slash"></span>
+          <span class="text-white"><strong>{{data.role}}</strong></span>
+        </div>
+      </div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+</section>
+
+<section class="site-section">
+    <div class="container">
+
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+          <div class="d-flex align-items-center">
+            <div>
+              <h2>Search A Job</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form method="get" action="/filterbylocation" class="search-jobs-form">
+        <div class="row mb-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-9 mb-4 mb-lg-0">
+            <input type="text" name="joblocation" class="form-control form-control-lg" placeholder="Enter location, city...">
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <button type="submit" class="btn btn-block btn-primary btn-md"><span class="icon-search icon mr-2"></span>Search by location</button>
+          </div>
+        </div>
+       </form>
+       <form method="get" action="/filterbydegree" class="search-jobs-form">
+        <div class="row mb-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-9 mb-4 mb-lg-0">
+            <input type="text" name="degree" class="form-control form-control-lg" placeholder="Enter the roll">
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <button type="submit" class="btn btn-block btn-primary btn-md"><span class="icon-search icon mr-2"></span>Search by roll</button>
+          </div>
+        </div>
+       </form>
+       <form method="get" action="/filterbybatch" class="search-jobs-form">
+        <div class="row mb-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-9 mb-4 mb-lg-0">
+            <input type="text" name="batch" class="form-control form-control-lg" placeholder="Enter year of experience ">
+          </div>
+          <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <button type="submit" class="btn btn-block btn-primary btn-md"><span class="icon-search icon mr-2"></span>Search by experience</button>
+          </div>
+        </div>
+       </form>
+       <form method="get" action="/sortbydate" class="search-jobs-form">
+        <div class="row mb-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-12 mb-4 mb-lg-0">
+            <button type="submit" class="btn btn-block btn-primary btn-md"><span class=""></span>Sort by Date</button>
+          </div>
+        </div>
+       </form>
+
+    </div>
+  </section>
+
+  <section class="site-section">
+    <div class="container">
+
+      <div class="row mb-5 justify-content-center">
+        <div class="col-md-7 text-center">
+          <h2 class="section-title mb-2">Job Listed</h2>
+        </div>
+      </div>
+      {% for d in data %}
+      <ul class="job-listings mb-5">
+        <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+          <a href="/getjob/{{d.id}}"></a>
+
+          <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+              <h1>{{d.role}}</h1>
+              <strong>{{d.company_name}} </strong>|
+              <strong> {{d.qualification}} </strong>|
+              <strong> {{d.yop|cut:"["|cut:"]"|cut:"'"}} </strong>|
+              <strong> {{d.salary}} LPA </strong>|
+              <strong> {{d.published_date}} </strong>
+            </div>
+            <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+              <span class="icon-room"></span> {{d.job_location}}
+            </div>
+            <div class="job-listing-meta">
+              <span class="badge badge-danger">{{d.category}}</span>
+            </div>
+          </div>
+        </li>
+        <br><br>
+      </ul>
+      {% endfor %}
+      <div>
+        <br><br>
+      <form method="get" action="/alljob" class="search-jobs-form">
+        <div class="row mb-5">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-12 mb-4 mb-lg-0">
+            <button type="submit" class="btn btn-block btn-primary btn-md"><span class=""></span>See More Jobs</button>
+          </div>
+        </div>
+       </form>
+      </div>
+    </div>
+  </section>
+
+{% endblock data %}

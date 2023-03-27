@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ application.job.title }}</h1>
+  <p>Status: {% if application.status == "accepted" %}Accepted{% elif application.status == "rejected" %}Rejected{% else %}Pending{% endif %}</p>
+  {% if application.status == "pending" %}
+    <form method="POST" action="{% url 'accept_job_application' application.id %}">
+      {% csrf_token %}
+      <input type="submit" value="Accept">
+    </form>
+    <form method="POST" action="{% url 'reject_job_application' application.id %}">
+      {% csrf_token %}
+      <input type="submit" value="Reject">
+    </form>
+  {% endif %}
+{% endblock %}
+

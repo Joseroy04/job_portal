@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block data %}
+<section class="section-hero overlay inner-page bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1 class="text-white font-weight-bold">All Jobs</h1>
+        <div class="custom-breadcrumbs">
+          <a href="{% url 'index' %}">Home</a> <span class="mx-2 slash">/</span>
+          <a href="{% url 'viewall' %}">Job Listing</a> <span class="mx-2 slash"></span>
+          <span class="text-white"><strong>{{data.role}}</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="site-section">
+    <div class="container">
+
+      <div class="row mb-5 justify-content-center">
+        <div class="col-md-7 text-center">
+          <h2 class="section-title mb-2">Job Listed</h2>
+        </div>
+      </div>
+      {% for d in data %}
+      <ul class="job-listings mb-5">
+        <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+          <a href="/getjob/{{d.id}}"></a>
+
+          <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+            <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+              <h1>{{d.role}}</h1>
+              <strong>{{d.drive_company_name}} </strong>|
+              <!-- <strong> {{d.qualification}} </strong>| -->
+              <!-- <strong> {{d.job_category}} </strong>| -->
+              <!-- <strong> {{d.yop|cut:"["|cut:"]"|cut:"'"}} </strong>| -->
+              <strong> {{d.qualification}} </strong>|
+              <strong> {{d.published_date|timesince}} ago</strong>
+            </div>
+            <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
+              <span class="icon-room"></span> {{d.job_location}}
+            </div>
+            <div class="job-listing-meta">
+              <span class="badge badge-danger">{{d.job_category}}</span>
+            </div>
+          </div>
+          {% if user.is_staff or user.is_superuser  %}
+          
+          <div style ="position: absolute; top: 40px; right: 80px;">
+            <form action="/edit/{{d.id}}">
+              <input type="submit" value="Update" class="btn btn-dark" />
+            </form>
+          </div>
+          
+          <div style ="position: absolute; top: 40px; right: 0px;">
+            <form action="/delete/{{d.id}}">
+              <input type="submit" value="Delete" class="btn btn-dark" />
+            </form>
+          </div>
+          {% endif %}
+        </li>
+        <br><br>
+        </ul>
+        <br><br>
+      {% endfor %}
+    </div>
+  </section>
+
+{% endblock data%}
