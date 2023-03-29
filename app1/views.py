@@ -204,12 +204,17 @@ def job_list(request):
 from django.http import HttpResponseRedirect
 @login_required(login_url="candidate_login")
 def apply_for_job(request, job_id):
-    jobObject = get_object_or_404(job, job_id=job_id)
-    candidate = get_object_or_404(Candidate, user=request.user)
-    # form = JobApplicationForm(request.POST or None) 
-    # if request.method == 'POST':
-        # if form.is_valid():
-    JobApplication.objects.get_or_create(candidate=candidate,job=jobObject,application_date=datetime.today())
+    try:
+        jobObject = get_object_or_404(job, job_id=job_id)
+        candidate = get_object_or_404(Candidate, user=request.user)
+        # form = JobApplicationForm(request.POST or None) 
+        # if request.method == 'POST':
+            # if form.is_valid():
+        JobApplication.objects.get_or_create(candidate=candidate,job=jobObject,application_date=datetime.today())
+    except:
+        content = {}
+        content['data'] = job.jb_manager.sort_by_date()
+        return render(request, 'searchjob.html',content)
         # application = form.save(commit=False)
         # application.job = job
         # application.candidate = candidate
@@ -220,9 +225,14 @@ def apply_for_job(request, job_id):
 
 @login_required(login_url="candidate_login")
 def job_applications(request):
-    candidate = get_object_or_404(Candidate, user=request.user)
-    applications = JobApplication.objects.filter(candidate=candidate).order_by('-application_date')
-    return render(request, 'job_applications.html', {'applications': applications})
+    try:
+        candidate = get_object_or_404(Candidate, user=request.user)
+        applications = JobApplication.objects.filter(candidate=candidate).order_by('-application_date')
+        return render(request, 'job_applications.html', {'applications': applications})
+    except:
+        content = {}
+        content['data'] = job.jb_manager.sort_by_date()
+        return render(request, 'searchjob.html',content)
 
 @login_required(login_url="candidate_login")
 def accept_job_application(request, application_id):
